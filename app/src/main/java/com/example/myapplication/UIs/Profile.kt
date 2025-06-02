@@ -121,7 +121,7 @@ fun ProfileScreen(navController: NavController, authViewModel: AuthViewModel) {
                     Image(
                         painter = painterResource(id = R.drawable.logo),
                         contentDescription = "Logo",
-                        modifier = Modifier.size(170.dp),
+                        modifier = Modifier.size(110.dp),
                         contentScale = ContentScale.Fit
                     )
                 }

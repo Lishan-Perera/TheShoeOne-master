@@ -14,9 +14,14 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -35,6 +40,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -56,6 +63,9 @@ fun SignUp(navController: NavController, authViewModel: AuthViewModel){
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
+    var passwordVisible by remember { mutableStateOf(false) }
+    var confirmPasswordVisible by remember { mutableStateOf(false) }
     val authState = authViewModel.authState.observeAsState()
     val context = LocalContext.current
     LaunchedEffect(authState.value) {
@@ -166,7 +176,7 @@ fun SignUp(navController: NavController, authViewModel: AuthViewModel){
 
             Spacer(modifier = Modifier.height(10.dp))
             Text(
-                text = "ENTER NEW PASSWORD",
+                text = "ENTER PASSWORD",
                 fontSize = 12.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.fillMaxWidth()
@@ -174,10 +184,19 @@ fun SignUp(navController: NavController, authViewModel: AuthViewModel){
             TextField(
                 value = password,
                 onValueChange = { password = it },
+                visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(5.dp)),
                 singleLine = true,
+                trailingIcon = {
+                    IconButton(onClick = {passwordVisible =!passwordVisible}) {
+                        Icon(
+                            imageVector = if(passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
+                            contentDescription = if (passwordVisible) "Hide password" else "Show password"
+                        )
+                    }
+                } ,
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = MaterialTheme.colorScheme.surface,
                     focusedTextColor = MaterialTheme.colorScheme.onSurface,
@@ -188,9 +207,44 @@ fun SignUp(navController: NavController, authViewModel: AuthViewModel){
             )
 
             Spacer(modifier = Modifier.height(10.dp))
+            Text(
+                text = "CONFIRM PASSWORD",
+                fontSize = 12.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.fillMaxWidth()
+            )
+            TextField(
+                value = confirmPassword, onValueChange = { confirmPassword = it },
+                modifier = Modifier.fillMaxWidth().background(
+                    MaterialTheme.colorScheme.surface, RoundedCornerShape(5.dp)
+                ),
+                visualTransformation = if(confirmPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                singleLine = true,
+                trailingIcon = {
+                    IconButton(onClick = {confirmPasswordVisible != confirmPasswordVisible}) {
+                        Icon(
+                            imageVector = if(confirmPasswordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
+                            contentDescription = if (confirmPasswordVisible) "Hide password" else "Show password"
+                        )
+                    }
+                },
+                colors = TextFieldDefaults.textFieldColors(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    cursorColor = MaterialTheme.colorScheme.primary,
+                    focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                    unfocusedIndicatorColor = MaterialTheme.colorScheme.outline
+                )
+            )
             Spacer(modifier = Modifier.height(20.dp))
             Button(
-                onClick = { authViewModel.signup(email, password)},
+                onClick = {
+                    if(password != confirmPassword){
+                        Toast.makeText(context,"Passwords Do not Match",Toast.LENGTH_SHORT).show()
+                    }else
+                    {
+                        authViewModel.signup(email, password)
+                    } },
                 enabled = authState.value != AuthState.Loading,
                 modifier = Modifier
                     .fillMaxWidth()

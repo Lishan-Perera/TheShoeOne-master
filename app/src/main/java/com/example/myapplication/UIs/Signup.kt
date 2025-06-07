@@ -221,7 +221,7 @@ fun SignUp(navController: NavController, authViewModel: AuthViewModel){
                 visualTransformation = if(confirmPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 singleLine = true,
                 trailingIcon = {
-                    IconButton(onClick = {confirmPasswordVisible != confirmPasswordVisible}) {
+                    IconButton(onClick = {confirmPasswordVisible =!confirmPasswordVisible}) {
                         Icon(
                             imageVector = if(confirmPasswordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
                             contentDescription = if (confirmPasswordVisible) "Hide password" else "Show password"

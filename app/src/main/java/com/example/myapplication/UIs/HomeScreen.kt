@@ -447,7 +447,7 @@ fun LogoAndSearchBar() {
             Image(
                 painter = painterResource(id = R.drawable.logo), // Replace with your logo resource
                 contentDescription = "Logo",
-                modifier = Modifier.size(80.dp), // Adjust size as needed
+                modifier = Modifier.size(90.dp), // Adjust size as needed
                 contentScale = ContentScale.Fit
             )
         }

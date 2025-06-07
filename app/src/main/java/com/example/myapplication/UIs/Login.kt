@@ -109,7 +109,7 @@ fun Login(
             contentDescription = "Logo",
             contentScale = ContentScale.Fit,
             modifier = Modifier
-                .height(120.dp)
+                .height(90.dp)
                 .width(150.dp)
         )
 

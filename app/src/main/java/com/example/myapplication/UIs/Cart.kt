@@ -83,7 +83,7 @@ fun Cart(
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Logo",
-                    modifier = Modifier.size(170.dp),
+                    modifier = Modifier.size(135.dp),
                     contentScale = ContentScale.Fit
                 )
             }

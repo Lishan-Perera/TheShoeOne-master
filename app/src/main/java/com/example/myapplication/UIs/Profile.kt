@@ -138,7 +138,7 @@ fun ProfileScreen(navController: NavController, authViewModel: AuthViewModel) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(16.dp))
+                        .background(MaterialTheme.colorScheme.surfaceDim, RoundedCornerShape(16.dp))
                         .padding(16.dp)
                 ) {
                     Column(

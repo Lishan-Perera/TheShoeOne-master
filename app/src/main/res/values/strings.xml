@@ -25,11 +25,11 @@
 
     <string name="product_name_nike1">Nike Dunk Low</string>
     <string name="product_category_nike1">Womens shoes</string>
-    <string name="product_price_nike1">20,000</string>
+    <string name="product_price_nike1">LKR 20,000</string>
 
     <string name="product_name_nike2">Nike SB Force</string>
     <string name="product_category_nike2">Mens shoes</string>
-    <string name="product_price_nike2">15,000</string>
+    <string name="product_price_nike2">LKR 15,000</string>
 
     <string name="product_name_nike3">Nike React Infinity</string>
     <string name="product_category_nike3">Unisex shoes</string>

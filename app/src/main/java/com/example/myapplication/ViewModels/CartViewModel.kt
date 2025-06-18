@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.myapplication.models.CartItem
 import java.util.UUID
 
+//This is my CartViewModel class that handles all the logic for the shopping cart.
 class CartViewModel : ViewModel() {
     private val _cartItems = mutableStateListOf<CartItem>()
     val cartItems: SnapshotStateList<CartItem> = _cartItems

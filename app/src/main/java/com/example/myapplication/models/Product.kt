@@ -3,6 +3,7 @@ package com.example.myapplication.models
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
+//product item my app and each product has:
 data class Product(
     @DrawableRes val imagesResourceId: Int,
     @StringRes val stringResourceId: Int,

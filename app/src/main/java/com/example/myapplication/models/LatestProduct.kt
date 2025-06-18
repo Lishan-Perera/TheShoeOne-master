@@ -7,3 +7,4 @@ data class LatestProduct(
     @SerializedName("name") val name: String,
     @SerializedName("price") val price: Double
 )
+//fetching the values from Json(converting to kotlin)

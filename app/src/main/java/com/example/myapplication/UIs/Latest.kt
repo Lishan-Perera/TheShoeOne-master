@@ -32,6 +32,7 @@ import com.example.myapplication.models.LatestProduct
 @Composable
 fun LatestProductCard(product: LatestProduct, navController: NavController){
     Log.d("LatestProductCard", "Loading product: ${product.name}, Image URL: ${product.imageUrl}")
+    // A Card to show each product
     Card(
         modifier = Modifier
             .padding(horizontal = 12.dp)
@@ -47,8 +48,10 @@ fun LatestProductCard(product: LatestProduct, navController: NavController){
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ){
+        // Content inside the card is arranged vertically
+        // Load and show the product image
         Column {
-            AsyncImage(
+            AsyncImage(// if we add url he can convert to image
                 model = product.imageUrl,
                 contentDescription = product.name,
                 contentScale = ContentScale.Crop,

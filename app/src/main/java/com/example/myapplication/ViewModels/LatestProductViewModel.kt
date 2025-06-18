@@ -26,4 +26,4 @@ class LatestProductsViewModel: ViewModel() {
             }
         }
     }
-}
+}// fetching the API response put in to lates Product to convert for modlue

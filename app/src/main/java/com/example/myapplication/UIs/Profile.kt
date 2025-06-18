@@ -78,10 +78,10 @@ fun ProfileScreen(navController: NavController, authViewModel: AuthViewModel) {
 
     // Context for SharedPreferences
     val context = LocalContext.current
-    val sharedPrefs = context.getSharedPreferences("profile_prefs", Context.MODE_PRIVATE)
+    val sharedPrefs = context.getSharedPreferences("profile_prefs", Context.MODE_PRIVATE)//creating a cashfile
 
     // User profile state variables
-    var isEditing by remember { mutableStateOf(false) }
+    var isEditing by remember { mutableStateOf(false) }//mutableStateOf() to hold data that can change
     var username by remember { mutableStateOf(sharedPrefs.getString("username", "MickyPerera") ?: "MickyPerera") }
     var password by remember { mutableStateOf(sharedPrefs.getString("password", "********") ?: "********") }
     var email by remember { mutableStateOf(sharedPrefs.getString("email", "micky@gmail.com") ?: "micky@gmail.com") }

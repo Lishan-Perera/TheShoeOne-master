@@ -12,3 +12,4 @@ data class CartItem(
     val price: Double,
     val isFromApi: Boolean = false
 )
+//Store information about a product the user added to their cart

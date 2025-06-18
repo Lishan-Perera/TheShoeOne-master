@@ -9,6 +9,8 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
+//This code checks the user's internet connection status in real-time using Kotlin Flows.
+// This sealed class represents two possible states: online or offline
 sealed class ConnectivityStatus {
     object Available : ConnectivityStatus()
     object Unavailable : ConnectivityStatus()
